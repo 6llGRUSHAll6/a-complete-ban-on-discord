@@ -1,2 +1,3 @@
 # a-complete-ban-on-discord
-(98% gpt chat code)
+(98% gpt chat code) prank
+ 
