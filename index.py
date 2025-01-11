@@ -16,14 +16,11 @@ class DiscordBlockerApp:
         self.status_label = tk.Label(root, text="Статус: Отключено", fg="red", font=("Arial", 14))
         self.status_label.pack(pady=10)
 
-        self.start_button = tk.Button(root, text="Запустить блокировку", command=self.start_blocker, bg="green", fg="white", font=("Arial", 12))
+        self.start_button = tk.Button(root, text="Запустить разблокировку", command=self.start_blocker, bg="green", fg="white", font=("Arial", 12))
         self.start_button.pack(pady=5)
 
-        self.stop_button = tk.Button(root, text="Остановить блокировку", command=self.stop_blocker, bg="red", fg="white", font=("Arial", 12))
+        self.stop_button = tk.Button(root, text="Остановить разблокировку", command=self.stop_blocker, bg="red", fg="white", font=("Arial", 12))
         self.stop_button.pack(pady=5)
-
-        self.exit_button = tk.Button(root, text="Выход", command=self.exit_app, bg="gray", fg="white", font=("Arial", 12))
-        self.exit_button.pack(pady=20)
 
     def start_blocker(self):
         if not self.is_running:
@@ -38,7 +35,7 @@ class DiscordBlockerApp:
             self.is_running = False
             self.status_label.config(text="Статус: Отключено", fg="red")
         else:
-            messagebox.showinfo("Информация", "Блокировка уже остановлена!")
+            messagebox.showinfo("Информация", "разблокировка уже остановлена!")
 
     def run_blocker(self):
         """Фоновый процесс блокировки Discord."""
@@ -51,12 +48,6 @@ class DiscordBlockerApp:
                 except (psutil.NoSuchProcess, psutil.AccessDenied):
                     pass
             time.sleep(5)
-
-    def exit_app(self):
-        """Выход из приложения."""
-        if self.is_running:
-            self.is_running = False
-        self.root.destroy()
 
 
 if __name__ == "__main__":
